@@ -1,0 +1,73 @@
+/* Styles used on every page */
+@font-face {
+  font-family: Aerosoldier;
+  src: url("../fonts/aerosoldier/AerosoldierBasic_PERSONAL_USE_ONLY.otf");
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body { font-family: Arial, Helvetica, sans-serif; }
+a { color: inherit; }
+
+/* Navigation */
+.site-header {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 28px clamp(22px, 5vw, 80px);
+}
+
+.site-logo {
+  font-family: Aerosoldier, Impact, sans-serif;
+  font-size: 27px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-header nav {
+  display: flex;
+  gap: clamp(16px, 3vw, 46px);
+  flex-wrap: wrap;
+}
+
+.site-header nav a {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-decoration: none;
+  padding-bottom: 7px;
+  border-bottom: 1px solid transparent;
+}
+
+.site-header nav a:hover,
+.site-header nav a.active { border-bottom-color: currentColor; }
+
+/* Text used on multiple pages */
+.eyebrow { font-size: 12px; letter-spacing: 3px; font-weight: bold; }
+h1 {
+  font-family: Aerosoldier, Impact, sans-serif;
+  font-weight: normal;
+  line-height: .98;
+  letter-spacing: 1px;
+}
+
+/* Layout for the comparison and music pages */
+.inner-page { color: #f4f0e8; background: #171717; }
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 70px clamp(22px, 5vw, 70px) 110px;
+}
+.page-content h1 { font-size: clamp(55px, 8vw, 110px); margin: 22px 0; }
+.intro { max-width: 700px; color: #c8c5be; font-size: 18px; line-height: 1.7; }
+
+@media (max-width: 720px) {
+  .site-header { align-items: flex-start; flex-direction: column; gap: 20px; }
+  .site-header nav { gap: 18px; }
+  .site-header nav a { font-size: 10px; letter-spacing: 1px; }
+  .page-content { padding-top: 45px; }
+}

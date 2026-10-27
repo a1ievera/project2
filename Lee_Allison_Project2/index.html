@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Blog | Home</title>
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body class="home-page">
+  <header class="site-header">
+    <a class="site-logo" href="index.html">SOUNDCHECK</a>
+    <nav aria-label="Main navigation">
+      <a class="active" aria-current="page" href="index.html">HOME</a>
+      <a href="pages/comparison.html">CONTENT</a>
+      <a href="pages/music.html">MUSIC</a>
+    </nav>
+  </header>
+  <main class="hero" aria-label="Music blog homepage">
+    <div class="hero-content">
+      <p class="eyebrow">NOW PLAYING:</p>
+      <h1>HOW DO YOU<br>LISTEN TO MUSIC?</h1>
+    </div>
+    <div class="music-player">
+      <button class="music-toggle" id="music-toggle" type="button" aria-label="Play music" aria-pressed="false">
+        <span class="play-icon" aria-hidden="true"></span>
+      </button>
+      <span class="music-label" id="music-label">PLAY MUSIC</span>
+      <audio id="homepage-audio" src="audio/demo-loop.mp4" loop preload="none"></audio>
+    </div>
+    <aside class="intro-box" aria-label="About this blog">
+      <p>How do you listen to music? Instead of downloading individual songs and uploading them into your iPod, most people these days use apps designed to let you play any song you want. But there's so many of them! How do you choose? This blog will compare three of the most current popular music apps to help you choose.</p>
+    </aside>
+  </main>
+  <script>
+    const button = document.getElementById('music-toggle');
+    const audio = document.getElementById('homepage-audio');
+    const label = document.getElementById('music-label');
+
+    button.addEventListener('click', async () => {
+      if (audio.paused) {
+        try {
+          await audio.play();
+          button.classList.add('playing');
+          button.setAttribute('aria-label', 'Pause music');
+          button.setAttribute('aria-pressed', 'true');
+          label.textContent = 'PAUSE MUSIC';
+        } catch (error) {
+          label.textContent = 'AUDIO UNAVAILABLE';
+        }
+      } else {
+        audio.pause();
+        button.classList.remove('playing');
+        button.setAttribute('aria-label', 'Play music');
+        button.setAttribute('aria-pressed', 'false');
+        label.textContent = 'PLAY MUSIC';
+      }
+    });
+  </script>
+</body>
+</html>

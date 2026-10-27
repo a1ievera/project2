@@ -1,0 +1,29 @@
+/* Comparison cards */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 65px;
+}
+
+.app-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  padding: 30px;
+  background: #282828;
+}
+
+.card-number, .card-footer {
+  color: #b4afa6;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+}
+.app-card h2 { font-size: 29px; margin: 40px 0 10px; }
+.app-card p { color: #c8c5be; line-height: 1.7; }
+.card-footer { margin-top: auto; padding-top: 32px; }
+
+@media (max-width: 720px) {
+  .comparison-grid { grid-template-columns: 1fr; }
+  .app-card { min-height: 260px; }
+}

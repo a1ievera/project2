@@ -1,0 +1,108 @@
+/* Full-screen homepage background */
+.home-page { color: white; background: #111; }
+
+.home-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .52), rgba(0, 0, 0, .08)),
+              url("../images/homepage.jpg") center / cover no-repeat;
+}
+
+/* Homepage title and bottom-right introduction */
+.hero {
+  position: relative;
+  min-height: calc(100svh - 92px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+  align-items: start;
+  gap: 35px;
+  padding: 30px clamp(22px, 5vw, 80px) 55px;
+}
+
+.hero-content { 
+  max-width: 760px; margin-top: clamp(28px, 7vh, 90px);transform: translateY(-50px); }
+.hero h1 { 
+  font-size: clamp(60px, 8vw, 120px); margin: 18px 0 26px; 
+  line-height: 1.1;
+}
+
+.intro-box {
+  justify-self: end;
+  align-self: end;
+  width: 100%;
+  max-width: 300px;
+  /* Right edge lines up with the MUSIC navigation link */
+}
+
+.intro-box p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* Music button: bottom-left, aligned with the homepage heading */
+.music-player {
+  position: absolute;
+  left: clamp(22px, 5vw, 80px);
+  bottom: 55px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.music-toggle {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.music-toggle:hover { background: rgba(255, 255, 255, .2); }
+.music-toggle:focus-visible { outline: 2px solid white; outline-offset: 4px; }
+
+.play-icon {
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 11px solid currentColor;
+}
+
+.music-toggle.playing .play-icon {
+  width: 12px;
+  height: 14px;
+  margin-left: 0;
+  border: 0;
+  border-left: 4px solid currentColor;
+  border-right: 4px solid currentColor;
+}
+
+.music-label { font-size: 12px; font-weight: bold; letter-spacing: 2px; }
+
+/* Stack the title and introduction on smaller screens */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    min-height: calc(100svh - 92px);
+    padding-bottom: 35px;
+  }
+  .hero-content { margin-top: 18px; }
+  .music-player {
+    position: static;
+    grid-row: 2;
+    margin-top: 10px;
+  }
+  .intro-box { max-width: 300px; grid-row: 3; }
+}
+
+@media (max-width: 720px) {
+  .hero { min-height: calc(100svh - 135px); }
+}

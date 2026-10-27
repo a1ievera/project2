@@ -1,0 +1,17 @@
+/* Song and playlist links */
+.music-list { margin-top: 65px; border-top: 1px solid #666; }
+
+.music-entry {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 25px 8px;
+  text-decoration: none;
+  border-bottom: 1px solid #666;
+}
+.music-entry:hover { background: #292929; }
+.track-number { color: #b4afa6; font-size: 12px; letter-spacing: 1.5px; }
+.track-info { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.track-info strong { font-size: 22px; }
+.track-info small { color: #b4afa6; }
+.edit-note { margin-top: 35px; color: #aaa; font-size: 13px; line-height: 1.8; }
