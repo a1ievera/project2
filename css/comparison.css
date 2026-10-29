@@ -1,29 +1,166 @@
-/* Comparison cards */
-.comparison-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 65px;
+/* Graffiti comparison: only the comparison page uses the brick wall. */
+body.inner-page {
+  background-color: #2b0e12;
+  background-image: linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.28)),
+                    url("../images/red-brick-wall.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: scroll;
 }
 
-.app-card {
+/* Text remains legible over the textured brick. */
+body.inner-page .site-header a,
+.page-content > .eyebrow,
+.page-content > h1 {
+  text-shadow: 2px 3px 5px rgba(0,0,0,.9);
+}
+
+/* Comparison page: a centered heading and three vertically stacked review boxes. */
+.page-content > .eyebrow,
+.page-content > h1 {
+  text-align: center;
+}
+
+.page-content > h1 {
+  font-size: clamp(60px, 8vw, 120px);
+  line-height: 1.1;
+  letter-spacing: 5px;
+  margin: 18px 0 26px;
+}
+
+/* Change the spacing between the three boxes here. */
+.comparison-list {
   display: flex;
   flex-direction: column;
-  min-height: 320px;
-  padding: 30px;
-  background: #282828;
+  gap: 46px;
+  margin-top: 64px;
 }
 
-.card-number, .card-footer {
-  color: #b4afa6;
-  font-size: 12px;
-  letter-spacing: 1.5px;
+.service-card {
+  display: grid;
+  grid-template-columns: minmax(220px, 32%) minmax(0, 1fr);
+  min-height: 302px;
+  border-image-slice: 76;
+  border-image-width: 35px;
+  border-image-outset: 11px;
+  border-image-repeat: round;
+  background: #050505;
+  box-shadow: 0 0 20px rgba(255,255,255,.14), 0 12px 35px rgba(0,0,0,.65);
+  overflow: visible;
 }
-.app-card h2 { font-size: 29px; margin: 40px 0 10px; }
-.app-card p { color: #c8c5be; line-height: 1.7; }
-.card-footer { margin-top: auto; padding-top: 32px; }
 
-@media (max-width: 720px) {
-  .comparison-grid { grid-template-columns: 1fr; }
-  .app-card { min-height: 260px; }
+.service-art {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-width: 0;
+  padding: 26px;
+  background: #050505;
+}
+
+.service-art img {
+  width: min(100%, 270px);
+  height: auto;
+  max-height: 110px;
+  object-fit: contain;
+  flex: 1 0 auto;
+}
+
+.card-index,
+.service-art-footer,
+.review-stat-layout h3,
+.stats-list dt {
+  color: #bdbdbd;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1.8px;
+}
+
+.card-index { align-self: flex-start; }
+.service-art-footer { align-self: flex-start; }
+
+.service-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 30px clamp(24px, 3vw, 46px) 34px;
+  background: #050505;
+}
+
+.service-content h2 {
+  margin: 0 0 26px;
+  font-size: clamp(25px, 3vw, 37px);
+  letter-spacing: 1.4px;
+}
+
+.review-stat-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(185px, 0.85fr);
+  gap: clamp(20px, 3.5vw, 48px);
+  flex: 1;
+}
+
+.review-stat-layout h3 {
+  margin: 0 0 17px;
+  color: #f2f0e9;
+}
+
+.review-area {
+  padding-right: 10px;
+}
+
+.placeholder {
+  margin: 0;
+  color: #979797;
+  font-size: 15px;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.stats-area {
+  padding-left: clamp(18px, 2.5vw, 32px);
+  border-left: 1px solid #555;
+}
+
+.stats-list { margin: 0; }
+.stats-list > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid #4b4b4b;
+}
+.stats-list > div:first-child { padding-top: 0; }
+.stats-list dt { color: #b4b4b4; }
+.stats-list dd { margin: 0; color: #b4b4b4; }
+
+@media (max-width: 900px) {
+  .service-card { grid-template-columns: minmax(185px, 32%) minmax(0, 1fr); }
+  .service-art { padding: 21px; }
+  .review-stat-layout { grid-template-columns: 1fr; gap: 24px; }
+  .stats-area { padding-left: 0; padding-top: 20px; border-left: 0; border-top: 1px solid #555; }
+}
+
+@media (max-width: 620px) {
+  .page-content > h1 { font-size: clamp(42px, 11vw, 68px); letter-spacing: 2px; }
+  .page-content > .eyebrow { font-size: 11px; line-height: 1.5; }
+  .comparison-list { margin-top: 35px; gap: 32px; }
+  .service-card { grid-template-columns: 1fr; }
+  .service-art { min-height: 170px; padding: 19px 24px; }
+  .service-art img { max-height: 72px; width: min(85%, 230px); }
+  .service-content { padding: 26px 24px 30px; }
+  .service-content h2 { margin-bottom: 22px; }
+}
+
+/* Preserve the painted border and brick texture on small screens. */
+@media (max-width: 620px) {
+  .service-card {
+    border-width: 13px;
+    border-image-width: 27px;
+    border-image-outset: 8px;
+  }
 }
